@@ -1,0 +1,1 @@
+"""Vendorized SynthID-Text components."""
