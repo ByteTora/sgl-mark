@@ -12,7 +12,7 @@
 
 **Why This Project?**
 - 🚀 **Production Performance**: Maintains all Mini-SGLang optimizations (Radix Cache, Chunked Prefill, FlashAttention)
-- 🔒 **Cryptographic Watermarking**: Achieve Z-scores > 50 for reliable watermark detection
+- 🔒 **Cryptographic Watermarking**: Achieve high Z-scores (e.g., >35) for reliable watermark detection
 - 🌐 **Platform Consistency**: Cross-platform hash alignment ensures consistent detection across Linux/GPU (server) and macOS/CPU (detector)
 - ⚡ **Zero Overhead**: Watermarking adds <5% latency to generation
 
@@ -27,7 +27,7 @@
 
 ### SynthID-Text Watermarking
 - **Tournament-Based Injection**: Advanced bit-level watermark embedding
-- **High Detectability**: Z-scores > 50 on standard-length generations (>500 tokens)
+- **High Detectability**: High confidence Z-scores on standard-length generations
 - **Context-Aware**: Dynamic N-gram sliding window for stateful generation
 - **Invisible to Humans**: No perceptible quality degradation
 
@@ -213,9 +213,9 @@ See [`engine.py:L232-234`](mini-sglang/python/minisgl/engine/engine.py#L232-L234
 
 | Text Length | Avg Z-Score | Detection Rate |
 |-------------|-------------|----------------|
-| 100 tokens  | 8.2         | 89.3%          |
-| 200 tokens  | 18.4        | 98.7%          |
-| 500+ tokens | 52.1        | **100%**       |
+| 100 tokens  | ~6.0        | 85%            |
+| 300 tokens  | ~20.0       | 98%            |
+| 900+ tokens | ~35.0       | **100%**       |
 
 ## FAQ
 
