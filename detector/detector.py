@@ -4,31 +4,22 @@ import os
 import argparse
 import transformers
 import torch
-import jax.numpy as jnp
 import numpy as np
 
 # Setup paths to find dependencies
 script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(script_dir) # mini-sglang-final
-workspace_root = os.path.dirname(project_root) # SGLang-water-mark
 
-# 1. Path to minisgl watermark vendorized code
-minisgl_path = os.path.join(project_root, 'mini-sglang/python/minisgl/watermark')
-if os.path.exists(minisgl_path):
-    sys.path.insert(0, minisgl_path)
+# Add mini-sglang/python to sys.path to allow importing minisgl
+minisgl_python_path = os.path.join(project_root, 'mini-sglang', 'python')
+if os.path.exists(minisgl_python_path):
+    sys.path.insert(0, minisgl_python_path)
 else:
-    print(f"Warning: minisgl watermark path not found at {minisgl_path}")
-
-# 2. Path to synthid-text source
-synthid_path = os.path.join(workspace_root, 'synthid-text/src')
-if os.path.exists(synthid_path):
-    sys.path.insert(0, synthid_path)
-else:
-    print(f"Warning: synthid-text src path not found at {synthid_path}")
+    print(f"Warning: minisgl python path not found at {minisgl_python_path}")
 
 try:
-    from vendor import hashing_function, logits_processing
-    from synthid_text import detector_mean
+    from minisgl.watermark.vendor import hashing_function, logits_processing
+    from minisgl.watermark import mean_score
 except ImportError as e:
     print(f"Error: Dependencies missing. {e}")
     sys.exit(1)
@@ -114,17 +105,17 @@ def analyze_watermark(text, keys, model_name="Qwen/Qwen3-0.6B", prompt_text=""):
     if valid_count == 0:
         return {"mean_score": 0.0, "z_score": 0.0, "valid_tokens": 0}
 
-    # Calculate Mean Score using synthid-text library
-    score = detector_mean.mean_score(jnp.array(g_values_np), jnp.array(combined_mask))
-    mean_score = float(score[0])
+    # Calculate Mean Score using local implementation
+    score = mean_score(g_values_np, combined_mask)
+    mean_score_val = float(score[0])
     
     # Standard Z-score for frequentist reporting
     # Formula: (mean - 0.5) / (std / sqrt(N * depth)) where std=0.5
     n_total = valid_count * len(keys)
-    z_score = (mean_score - 0.5) * np.sqrt(12 * n_total)
+    z_score = (mean_score_val - 0.5) * np.sqrt(12 * n_total)
     
     return {
-        "mean_score": mean_score,
+        "mean_score": mean_score_val,
         "z_score": z_score,
         "valid_tokens": valid_count
     }
