@@ -49,8 +49,8 @@
 
 ```bash
 # Clone the repository
-git clone <this-repo-url>
-cd mini-sglang-final/mini-sglang
+git clone https://github.com/ByteTora/sgl-mark.git
+cd sgl-mark/mini-sglang
 
 # Create virtual environment (using uv for faster installation)
 uv venv --python=3.12
@@ -277,6 +277,6 @@ This project is licensed under Apache License 2.0. See [LICENSE](LICENSE) for de
 
 ---
 
-**Maintained by**: [Your Name/Organization]  
-**Issues**: [GitHub Issues](https://github.com/your-org/repo/issues)  
-**Discussions**: [GitHub Discussions](https://github.com/your-org/repo/discussions)
+**Maintained by**: [ByteTora]  
+**Issues**: [GitHub Issues](https://github.com/ByteTora/sgl-mark/issues)  
+**Discussions**: [GitHub Discussions](https://github.com/ByteTora/sgl-mark/discussions)

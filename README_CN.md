@@ -49,8 +49,8 @@
 
 ```bash
 # 克隆仓库
-git clone <this-repo-url>
-cd mini-sglang-final/mini-sglang
+git clone https://github.com/ByteTora/sgl-mark.git
+cd sgl-mark/mini-sglang
 
 # 创建虚拟环境 (建议使用 uv 以获得极速安装体验)
 uv venv --python=3.12
