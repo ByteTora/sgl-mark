@@ -137,20 +137,15 @@ python detector/detector.py --input samples/output_with_watermark.txt --keys "65
 ======================================================================
 SynthID-Text Watermark Detection
 ======================================================================
+Analyzing: output_with_watermark.txt
 
-Detecting watermarked text...
-File: watermarked_output.txt
-Total tokens: 543
-Valid tokens (after masking): 512
+Results:
+  Mean Score:   0.606681
+  Valid Tokens: 943
+  Z-Score:      35.8866
 
-Detection Results:
-  Mean score: 0.6127
-  Z-score: 52.47
-  Watermark detected: ✅ YES
-
-Interpretation:
-  Z-score > 10.0: High confidence watermark detected
-  Z-score < 1.0:  No watermark or random noise
+Verdict:
+  ✅ WATERMARK DETECTED (High Confidence)
 ======================================================================
 ```
 

@@ -135,22 +135,17 @@ python detector/detector.py --input samples/output_with_watermark.txt --keys "65
 **预期输出：**
 ```
 ======================================================================
-SynthID-Text 水印检测结果
+SynthID-Text Watermark Detection
 ======================================================================
+Analyzing: output_with_watermark.txt
 
-正在检测目标文件...
-文件路径: watermarked_output.txt
-总 Token 数量: 543
-有效检测 Token (应用 Mask 后): 512
+Results:
+  Mean Score:   0.606681
+  Valid Tokens: 943
+  Z-Score:      35.8866
 
-检测详情:
-  平均得分 (Mean score): 0.6127
-  置信度 (Z-score): 52.47
-  是否包含水印: ✅ 是 (YES)
-
-结果解读:
-  Z-score > 10.0: 高置信度判定为包含水印
-  Z-score < 1.0:  判定为无水印或随机底噪
+Verdict:
+  ✅ WATERMARK DETECTED (High Confidence)
 ======================================================================
 ```
 
