@@ -14,18 +14,21 @@ This module provides the offline detection capabilities for the **SGL-Mark** pro
 Ensure you have the main project dependencies installed:
 
 ```bash
-cd mini-sglang-final/mini-sglang
-pip install -e .
+# From the project root
+pip install -e ./mini-sglang
 ```
 
-You also need `jax` and `jaxlib` for the detector's scoring functions (installed automatically via `synthid-text` requirements).
+The detector uses **NumPy** for scoring, making it lightweight and compatible with standard CPU environments.
 
 ## Usage
 
 Run the detection script by providing the text file and the keys used during generation.
 
+Run the detection script by providing the text file and the keys used during generation.
+
 ```bash
-python detector.py --input <path_to_text_file> --keys "654,400,836,123,340,443,597,160,57,29"
+# Example using the provided sample
+python detector.py --input ../samples/output_with_watermark.txt --keys "654,400,836,123,340,443,597,160,57,29"
 ```
 
 ### Options

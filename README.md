@@ -128,7 +128,8 @@ curl http://localhost:8000/v1/chat/completions \
 Use the `detector/detector.py` script:
 
 ```bash
-python detector/detector.py --input watermarked_output.txt --keys "654,400,836,123,340,443,597,160,57,29"
+# Detect watermark in a sample file
+python detector/detector.py --input samples/output_with_watermark.txt --keys "654,400,836,123,340,443,597,160,57,29"
 ```
 
 **Expected Output:**

@@ -128,7 +128,8 @@ curl http://localhost:8000/v1/chat/completions \
 使用 `detector/detector.py` 脚本：
 
 ```bash
-python detector/detector.py --input watermarked_output.txt --keys "654,400,836,123,340,443,597,160,57,29"
+# 检测示例文件中的水印
+python detector/detector.py --input samples/output_with_watermark.txt --keys "654,400,836,123,340,443,597,160,57,29"
 ```
 
 **预期输出：**
